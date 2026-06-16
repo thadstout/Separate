@@ -1,0 +1,50 @@
+:root {
+  --bg: #f6f2e9;
+  --card: #fffaf1;
+  --ink: #1f2933;
+  --muted: #5b6673;
+  --accent: #714a24;
+  --accent-dark: #4b2f17;
+  --border: #dfd2bd;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: radial-gradient(circle at top, #fffdf8 0, var(--bg) 44%, #e9ddc9 100%);
+  color: var(--ink);
+}
+.shell { width: min(920px, 92vw); margin: 0 auto; padding: 32px 0; }
+.hero { text-align: center; padding: 22px 0 12px; }
+.eyebrow { color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: .08em; }
+h1 { font-size: clamp(2rem, 7vw, 4rem); margin: 0; line-height: 1; }
+.subtitle { color: var(--muted); font-size: 1.15rem; max-width: 700px; margin: 16px auto 0; }
+.card {
+  background: rgba(255,250,241,.93);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 12px 35px rgba(75,47,23,.08);
+}
+label { display: block; font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; }
+textarea {
+  width: 100%; resize: vertical; border-radius: 14px; border: 1px solid var(--border);
+  padding: 14px; font: 1.05rem/1.5 system-ui, sans-serif; color: var(--ink); background: white;
+}
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+button {
+  border: 0; border-radius: 999px; padding: 12px 18px; font-weight: 700; cursor: pointer;
+  background: var(--accent); color: white; font-size: 1rem;
+}
+button:hover { background: var(--accent-dark); }
+button.secondary { background: transparent; color: var(--accent-dark); border: 1px solid var(--border); }
+.small { color: var(--muted); font-size: .92rem; }
+.hidden { display: none; }
+.answer h2, .answer h3 { margin-bottom: 6px; }
+.badge { display: inline-block; background: #efe3d0; border: 1px solid var(--border); color: var(--accent-dark); padding: 7px 11px; border-radius: 999px; font-weight: 700; }
+.scripture { padding: 12px 14px; border-left: 4px solid var(--accent); background: #fff; margin: 10px 0; border-radius: 10px; }
+.scripture a { color: var(--accent-dark); font-weight: bold; }
+summary { cursor: pointer; font-weight: bold; color: var(--accent-dark); }
+.framework { color: var(--muted); }
+@media (max-width: 560px) { .shell { padding-top: 18px; } .card { padding: 17px; } }

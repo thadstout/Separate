@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblical Separation Guide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Teen Biblical Separation Tool</p>
+      <h1>Ask an open Bible question.</h1>
+      <p class="subtitle">This guide answers only within the scope of biblical separation, using Scripture, truth in love, and speech seasoned with grace.</p>
+    </section>
+
+    <section class="card">
+      <label for="question">Your question</label>
+      <textarea id="question" rows="5" placeholder="Example: My friend says church is fishing on the lake. Is that ok?"></textarea>
+      <div class="actions">
+        <button id="answerBtn">Answer from Scripture</button>
+        <button id="clearBtn" class="secondary">Clear</button>
+      </div>
+      <p class="small">Scripture is looked up online from a KJV Bible API when available. No Bible JSON file is bundled into the app.</p>
+    </section>
+
+    <section id="answer" class="card answer hidden" aria-live="polite"></section>
+
+    <details class="card">
+      <summary>Show the decision framework</summary>
+      <div class="framework">
+        <h2>Four foundations</h2>
+        <ol>
+          <li><strong>Scripture governs the answer.</strong> The app must not answer from religious opinion, tradition, culture, or outside sources.</li>
+          <li><strong>Context matters.</strong> A verse must not be used in a way that ignores its biblical setting.</li>
+          <li><strong>Separation must match biblical weight.</strong> Primary, Biblical conviction, and wisdom/application issues are not treated the same.</li>
+          <li><strong>Truth must be spoken in love.</strong> Clear where Scripture is clear; restrained where Scripture has not given enough evidence.</li>
+        </ol>
+        <h2>Possible conclusions</h2>
+        <p>Clearly wrong; clearly required; permissible with wisdom; matter of Biblical conviction; caution needed; insufficient Biblical evidence; outside the scope of this app.</p>
+      </div>
+    </details>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
