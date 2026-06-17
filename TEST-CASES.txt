@@ -1,14 +1,15 @@
-TEST THESE AFTER INSTALLING
+TEST CASES
 
-These must return Separation Required:
+Each of these must produce:
+Conclusion: Separation Required
+Show Your Work includes: OVERRIDE_USED: TONGUES_SALVATION
 
 1. Can I attend a church where speaking in tongues is needed for salvation?
-2. My friend's church says you have to speak in tongues to be saved.
-3. Is tongues required for salvation?
-4. Do I need to speak in tongues to be saved?
-5. They say speaking in tongues is evidence of salvation and if you don't you are not saved.
+2. Can I attend a church where speaking in tongues is needed before salvation?
+3. My friend's church says you have to speak in tongues to be saved.
+4. Is speaking in tongues proof of salvation?
+5. My church says you are not saved unless you speak in tongues.
+6. Do I need to speak in tongues to be saved?
+7. They say tongues are evidence that I have the Holy Spirit and am saved.
 
-If any of these still return Christian Wisdom Needed:
-- The hard override was not placed before the AI call.
-- Or the deployed site is not using the updated file.
-- Or GitHub/Netlify did not redeploy the latest code.
+If the marker does not show, the code is not running.

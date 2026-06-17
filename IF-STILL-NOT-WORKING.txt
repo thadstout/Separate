@@ -1,0 +1,23 @@
+IF THE NETLIFY FUNCTION STILL DOES NOT CHANGE
+
+If the answer still does not show OVERRIDE_USED: TONGUES_SALVATION, the site may not be using the file you patched.
+
+Possible reasons:
+1. The app asks AI from the frontend instead of netlify/functions/ask.js.
+2. The function file has a different name.
+3. GitHub committed the patch but Netlify did not redeploy.
+4. The old deployment is cached.
+5. The app has a fallback local decision engine that overwrites the function answer.
+
+Emergency frontend safety:
+Search your project for:
+- Christian Wisdom Needed
+- fetch(
+- /.netlify/functions/
+- ask
+- response.answer
+
+If you find a frontend function that receives the answer and displays it, you can also run the same detector there before displaying the AI answer.
+
+The best permanent fix is still:
+The backend/function should force the answer before AI.

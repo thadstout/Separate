@@ -1,44 +1,44 @@
-README FIRST - HARD OVERRIDE PATCH
+README FIRST - Tongues Salvation Force Fix
 
-Problem:
-The prompt patches did not fix the tongues-for-salvation issue because the AI is still allowed to choose the final conclusion.
+Why the last patch likely failed:
+1. The wording "tongues before salvation" may not have matched the earlier detector.
+2. The hard override may not have been placed before the AI call.
+3. The app may have more than one response path, so the patch may be in the wrong file.
+4. The AI response may be replacing the forced result later.
 
-Fix:
-This patch adds a hard code-level override.
+This patch does two things:
+1. Uses a much broader detector for tongues/sign gifts connected to salvation.
+2. Adds a visible debug marker: OVERRIDE_USED: TONGUES_SALVATION
 
-If the question says or implies that tongues are required for salvation, the code forces:
+If the app answer does not include that marker in Show Your Work, then this code is not running in the live app.
 
+Install:
+1. Open the file that handles the teen question. Usually:
+   - netlify/functions/ask.js
+   - api/ask.js
+   - ask.js
+   - src/lib/ai.js
+
+2. Paste the function from TONGUES-SALVATION-FORCEFIX.js near the top.
+
+3. Immediately after the app reads the question, add:
+
+const forced = forceTonguesSalvationAnswer(question);
+if (forced) {
+  return jsonResponse(forced);
+}
+
+If you do not already have jsonResponse, use the full Netlify example in EXAMPLE-NETLIFY-ASK-PATCH.js.
+
+Most important:
+This must run BEFORE any AI call and BEFORE any "Christian Wisdom Needed" fallback.
+
+Testing:
+Ask exactly:
+Can I attend a church where speaking in tongues is needed for salvation?
+
+The answer must include:
 Conclusion: Separation Required
-Category: Primary Separation
+OVERRIDE_USED: TONGUES_SALVATION
 
-The AI is not allowed to downgrade this to:
-- Christian Wisdom Needed
-- Proceed With Caution
-- Insufficient Biblical Evidence
-- Biblically Acceptable
-
-Where to install:
-Open your main AI/ask file. It is probably:
-- netlify/functions/ask.js
-- ask.js
-- api/ask.js
-- src/lib/ai.js
-
-Safest method:
-1. Copy the function from HARD-OVERRIDE-CODE.js.
-2. Paste it near the top of your ask.js file.
-3. After you read the teen's question, run:
-
-const override = getHardOverride(question);
-
-4. If override exists, return it immediately instead of asking the AI.
-
-This is important:
-A prompt asks the AI to obey.
-A hard override prevents the wrong answer from ever being returned.
-
-Do not change:
-- Netlify settings
-- package.json
-- folder structure
-- build command
+If it does not, the patch is not being reached by the deployed app.
