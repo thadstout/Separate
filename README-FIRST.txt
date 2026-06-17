@@ -1,43 +1,42 @@
-README FIRST - Biblical Separation App Voice Patch
+README FIRST - KJV Scripture Search Patch
 
 Purpose:
-This patch is only meant to improve the tone and thoughtfulness of the app responses.
-It should not change your Netlify setup, build settings, folders, or deployment structure.
+This patch adds a safer way to bundle more Scripture into the app without relying on one giant JSON file.
 
-What to do:
-1. Open your GitHub repository.
-2. Find the file where the AI prompt is written. It is probably one of these:
-   - netlify/functions/ask.js
-   - ask.js
-   - api/ask.js
-   - src/ask.js
-   - src/lib/ai.js
-   - src/lib/prompt.js
-
-3. Look for your existing SYSTEM_PROMPT, VOICE_RULES, RESPONSE_FORMAT, or similar prompt text.
-
-4. Copy the contents of PATCH-VOICE-RULES.js into that prompt area.
-
-5. The safest method:
-   - Keep your existing API code.
-   - Keep your existing Netlify function.
-   - Only replace or add the prompt text.
-
-6. Commit the change to GitHub.
-7. Let Netlify redeploy normally.
+What this patch does:
+- Uses smaller KJV files by Bible section/book.
+- Adds a local Scripture search helper.
+- Keeps your foundation documents/framework in control.
+- Prevents the AI from answering from general religious memory.
+- Helps avoid Netlify JSON fetch errors like receiving <!DOCTYPE html> instead of JSON.
 
 Important:
-Do not rename folders.
-Do not change package.json.
-Do not change netlify.toml.
-Do not add new dependencies.
-Do not move your Netlify function.
+This is NOT a full app replacement.
+Do not delete your working app.
+Do not change your Netlify settings.
+Do not rename your existing folders.
 
-Goal:
-The app should stop sounding canned and start sounding like thoughtful Biblical counsel for teens:
-- warm
-- direct
-- Scripture-governed
-- not robotic
-- not soft where Scripture is clear
-- not conclusive where Scripture is silent
+Recommended installation:
+1. Copy the included src/data/kjv folder into your app's src/data folder.
+2. Copy src/lib/searchKJV.js into your app's src/lib folder.
+3. Add the prompt rules from PROMPT-KJV-SOURCE-RULES.txt into your existing SYSTEM_PROMPT.
+4. In your ask/AI function, call searchKJV(question) before asking the AI to answer.
+5. Send the retrieved Scripture passages to the AI along with your foundation framework.
+
+If your app does not have src/lib:
+- Create it, or place searchKJV.js wherever your helper files currently live.
+
+If your app uses Netlify functions:
+- Import the helper into your function if your build supports it.
+- Or paste the helper function directly into netlify/functions/ask.js.
+
+Core rule:
+The Bible supplies the authority.
+The foundation documents supply the boundaries and conclusions.
+The AI may only answer from retrieved KJV Scripture plus the approved framework.
+
+Do not:
+- Use one giant Bible JSON file.
+- Fetch /bible.json from public.
+- Allow the AI to answer from memory.
+- Add commentaries or outside religious sources.
