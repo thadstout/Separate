@@ -1,23 +1,14 @@
-TEST CASES
+TEST THESE AFTER INSTALLING
 
-These must return Separation Required / Primary Separation:
+These must return Separation Required:
 
 1. Can I attend a church where speaking in tongues is needed for salvation?
-2. My friend's church says you must speak in tongues to be saved. Should I go?
-3. Is it okay to join a church that teaches tongues are proof that you are saved?
-4. My church says if you do not speak in tongues you do not have the Holy Spirit and are not saved.
-5. A church says baptism and tongues are required to be saved. Can I fellowship there?
+2. My friend's church says you have to speak in tongues to be saved.
+3. Is tongues required for salvation?
+4. Do I need to speak in tongues to be saved?
+5. They say speaking in tongues is evidence of salvation and if you don't you are not saved.
 
-These should include strong sign-gifts warning verses:
-
-1. Are tongues for today?
-2. Is it okay if my church has everyone speak in tongues at once?
-3. My youth group pressures people to speak in tongues. Is that okay?
-4. My friend says tongues are the best proof of spirituality.
-5. Should I go to a charismatic youth rally?
-
-These should NOT automatically be gospel corruption unless salvation is changed:
-
-1. My friend believes tongues still exist.
-2. My church believes in healing gifts.
-3. A church prays for healing.
+If any of these still return Christian Wisdom Needed:
+- The hard override was not placed before the AI call.
+- Or the deployed site is not using the updated file.
+- Or GitHub/Netlify did not redeploy the latest code.

@@ -1,38 +1,44 @@
-README FIRST - Doctrine Before Topic + Sign Gifts Patches
+README FIRST - HARD OVERRIDE PATCH
 
-Purpose:
-These patches address two problems:
+Problem:
+The prompt patches did not fix the tongues-for-salvation issue because the AI is still allowed to choose the final conclusion.
 
-1. The app is treating "tongues" as a generic spiritual gifts topic and returning Christian Wisdom Needed,
-   even when the question says tongues are needed for salvation.
+Fix:
+This patch adds a hard code-level override.
 
-2. The app is not giving strong enough Biblical warnings for tongues/sign gifts questions.
+If the question says or implies that tongues are required for salvation, the code forces:
 
-Core fix:
-The app must classify by the doctrine affected, not merely by the topic keyword.
+Conclusion: Separation Required
+Category: Primary Separation
 
-Example:
-- "Does your church believe tongues still exist?" = sign gifts / Biblical conviction issue.
-- "Does your church teach tongues are required for salvation?" = gospel corruption / Primary Separation.
+The AI is not allowed to downgrade this to:
+- Christian Wisdom Needed
+- Proceed With Caution
+- Insufficient Biblical Evidence
+- Biblically Acceptable
 
-Installation:
-1. Open your GitHub repository.
-2. Find your main AI prompt file. It may be:
-   - netlify/functions/ask.js
-   - ask.js
-   - api/ask.js
-   - src/lib/prompt.js
-   - src/lib/ai.js
+Where to install:
+Open your main AI/ask file. It is probably:
+- netlify/functions/ask.js
+- ask.js
+- api/ask.js
+- src/lib/ai.js
 
-3. Add PATCH-1-DOCTRINE-BEFORE-TOPIC.txt into your SYSTEM_PROMPT before Christian Wisdom rules.
-4. Add PATCH-2-SIGN-GIFTS-TONGUES.txt into your SYSTEM_PROMPT near your doctrine/category rules.
-5. If your app has a JavaScript classifier, add or paste DECISION-GUARD-DOCTRINE-SIGNGIFTS.js.
-6. Add SIGN-GIFTS-VERSES.js to your KJV verse data if you are using the Scripture search patch.
-7. Commit to GitHub and let Netlify redeploy.
+Safest method:
+1. Copy the function from HARD-OVERRIDE-CODE.js.
+2. Paste it near the top of your ask.js file.
+3. After you read the teen's question, run:
 
-Important:
-Do not change Netlify settings.
-Do not rename folders.
-Do not change package.json.
-Do not add dependencies.
-Do not delete your foundation framework.
+const override = getHardOverride(question);
+
+4. If override exists, return it immediately instead of asking the AI.
+
+This is important:
+A prompt asks the AI to obey.
+A hard override prevents the wrong answer from ever being returned.
+
+Do not change:
+- Netlify settings
+- package.json
+- folder structure
+- build command
