@@ -1,0 +1,27 @@
+EXAMPLE INTEGRATION NOTE
+
+If your app only uses prompts:
+- Add PATCH-1 and PATCH-2 into SYSTEM_PROMPT.
+- That may help, but if the model keeps ignoring the rule, use the JavaScript guard.
+
+If your app has a Netlify function:
+1. Paste doctrineBeforeTopicGuard into ask.js, or import it.
+2. Before creating the AI prompt, run:
+
+const guard = doctrineBeforeTopicGuard(question);
+
+3. Add this to the user prompt:
+
+Doctrine Guard Result:
+${JSON.stringify(guard)}
+
+Mandatory:
+If guard.forced is true, the conclusion must be guard.outcome and the category must be guard.category.
+Do not downgrade this to Christian Wisdom Needed.
+
+4. If guard.forced is true and the AI still disobeys, do not use the AI's conclusion.
+Return the forced conclusion from code.
+
+That is the strongest fix:
+Code decides the non-negotiable category.
+AI only writes the explanation.
