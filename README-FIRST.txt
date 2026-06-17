@@ -1,69 +1,61 @@
-README FIRST - Universal Gospel Override Patch
-
-Your latest test proves the patched code is not running in the live response path.
+README FIRST - Final Display Override Patch
 
 Problem:
-The app answered "Christian Wisdom Needed" for works salvation. That should never happen.
+The app still says "Christian Wisdom Needed" for works salvation.
+That means the earlier backend/prompt overrides are not controlling the final displayed answer.
 
-That means one of these is true:
-1. The override was placed in the wrong file.
-2. The override runs after the AI answer instead of before it.
-3. The frontend is calling a different function than the one patched.
-4. The frontend has its own fallback answer that is displaying Christian Wisdom Needed.
-5. Netlify did not redeploy the changed file.
+Most likely causes:
+1. The app has a frontend fallback that returns Christian Wisdom Needed.
+2. The patched Netlify function is not the one the site is using.
+3. The AI answer is being displayed after the override runs.
+4. The answer is generated in App.jsx/App.js, not only in netlify/functions/ask.js.
 
-This patch gives you a stronger universal override.
+This patch fixes the problem at the FINAL DISPLAY LAYER.
 
-It catches:
-- tongues required for salvation
-- works required for salvation
-- baptism required for salvation
-- sacraments required for salvation
-- church membership required for salvation
-- faith plus works
-- anything that says salvation requires something added to faith in Christ
+Goal:
+Before the app displays any answer to the teen, it checks the original question.
+If the question describes salvation plus works, tongues, baptism, sacraments, church membership, or any religious act, the app displays:
 
-Install in TWO places if needed:
+Conclusion: Separation Required
+Category: Primary Separation
 
-A. BACKEND / NETLIFY FUNCTION
-Find:
-- netlify/functions/ask.js
-- ask.js
-- api/ask.js
+This prevents the wrong answer from being shown even if the AI or fallback engine says Christian Wisdom Needed.
 
-Paste UNIVERSAL-GOSPEL-OVERRIDE.js near the top.
-Immediately after reading the teen question, run:
-
-const gospelOverride = getUniversalGospelOverride(question);
-if (gospelOverride) {
-  return {
-    statusCode: 200,
-    headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
-    body: JSON.stringify(gospelOverride)
-  };
-}
-
-This must happen BEFORE calling AI.
-
-B. FRONTEND DISPLAY SAFETY
-Find the file that sends or displays the answer, often:
+Where to install:
+Find the file where the answer is displayed or set. Common files:
 - src/App.jsx
 - src/App.js
 - src/main.jsx
 - src/components/QuestionForm.jsx
+- src/components/AnswerBox.jsx
 
-Before displaying the AI answer, run the same override.
-If override exists, display override.answer instead of the AI answer.
+Search in GitHub for:
+- setAnswer
+- Christian Wisdom Needed
+- response.answer
+- data.answer
+- fetch("/.netlify/functions
+- fetch('/.netlify/functions
 
-Why both?
-Because right now we do not know which path is producing the wrong response.
-Putting the override on both sides makes it much harder for the wrong answer to display.
+Then paste FINAL-DISPLAY-OVERRIDE.js into that file or import it.
 
-Test:
+How to use:
+Right before setAnswer(data.answer) or wherever the answer is displayed, add:
+
+const finalOverride = finalDisplayGospelOverride(question);
+if (finalOverride) {
+  setAnswer(finalOverride.answer);
+  return;
+}
+
+Also put it BEFORE any local fallback like:
+"Christian Wisdom Needed"
+
+Testing:
 Ask:
-"Can I attend a church that teaches works are needed for salvation?"
+Can I attend a church that teaches works are needed for salvation?
 
 Correct answer must include:
-OVERRIDE_USED: UNIVERSAL_GOSPEL_OVERRIDE
+OVERRIDE_USED: FINAL_DISPLAY_GOSPEL_OVERRIDE
 
-If that marker does not show, the override still is not in the running code path.
+If the marker appears, the patch is finally in the visible answer path.

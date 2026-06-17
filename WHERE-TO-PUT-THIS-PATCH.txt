@@ -1,0 +1,33 @@
+WHERE TO PUT THIS PATCH
+
+In GitHub, use search to find the live answer path.
+
+Search for these exact words:
+
+setAnswer
+
+If found, the patch goes in that file.
+
+Also search:
+
+Christian Wisdom Needed
+
+If you find a file that contains fallback logic returning Christian Wisdom Needed, the patch must go BEFORE that fallback.
+
+Also search:
+
+fetch("/.netlify/functions
+
+or
+
+fetch('/.netlify/functions
+
+The patch should go in the function that contains that fetch call.
+
+The key rule:
+The finalDisplayGospelOverride(question) check must happen BEFORE the app displays the answer.
+
+If the app still does not show:
+OVERRIDE_USED: FINAL_DISPLAY_GOSPEL_OVERRIDE
+
+then the patch was not put into the file that controls the displayed answer.
