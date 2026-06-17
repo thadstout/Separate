@@ -1,15 +1,14 @@
 TEST CASES
 
-Each of these must produce:
+All of these must return:
 Conclusion: Separation Required
-Show Your Work includes: OVERRIDE_USED: TONGUES_SALVATION
+Show Your Work includes: OVERRIDE_USED: UNIVERSAL_GOSPEL_OVERRIDE
 
-1. Can I attend a church where speaking in tongues is needed for salvation?
-2. Can I attend a church where speaking in tongues is needed before salvation?
-3. My friend's church says you have to speak in tongues to be saved.
-4. Is speaking in tongues proof of salvation?
-5. My church says you are not saved unless you speak in tongues.
-6. Do I need to speak in tongues to be saved?
-7. They say tongues are evidence that I have the Holy Spirit and am saved.
-
-If the marker does not show, the code is not running.
+1. Can I attend a church that teaches works are needed for salvation?
+2. Is works salvation okay?
+3. My friend's church says good works are required to be saved.
+4. Can I attend a church where speaking in tongues is needed for salvation?
+5. Do I need baptism to be saved?
+6. Is baptism required for salvation?
+7. They say sacraments are necessary for salvation.
+8. Their church says you must join their church to be saved.

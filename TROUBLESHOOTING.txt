@@ -1,0 +1,27 @@
+TROUBLESHOOTING
+
+If the answer still does not include:
+OVERRIDE_USED: UNIVERSAL_GOSPEL_OVERRIDE
+
+then the patch is still not in the running code path.
+
+Search GitHub for:
+1. Christian Wisdom Needed
+2. fetch(
+3. /.netlify/functions/
+4. functions/ask
+5. setAnswer
+6. response.answer
+7. conclusion
+
+The wrong answer is coming from the file that contains one of those.
+
+Likely fix:
+- Put the frontend safety version inside the file that has setAnswer().
+- Put the backend version inside the file that handles the Netlify function.
+
+Also check Netlify:
+- Did the latest GitHub commit deploy?
+- Is the deployed branch the same branch you edited?
+- Did the deploy fail?
+- Are you testing the live Netlify URL or an older preview URL?
